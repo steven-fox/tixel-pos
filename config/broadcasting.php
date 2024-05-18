@@ -77,6 +77,9 @@ return [
             'driver' => 'null',
         ],
 
+        'webhook' => [
+            'driver' => 'webhook',
+        ],
     ],
 
 ];
