@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         );
 
         Broadcast::extend('webhook', function ($app, $config) {
-            return new WebhookBroadcaster($config);
+            return new WebhookBroadcaster();
         });
     }
 }

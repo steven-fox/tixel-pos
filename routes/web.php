@@ -1,14 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', fn() => Inertia::render('Pos'))->name('pos');
-    Route::get('/website', fn() => Inertia::render('Website'))->name('website');
+    Route::get('/', fn () => Inertia::render('Pos'))->name('pos');
+    Route::get('/website', fn () => Inertia::render('Website'))->name('website');
 });
 
 Route::middleware('auth')->group(function () {

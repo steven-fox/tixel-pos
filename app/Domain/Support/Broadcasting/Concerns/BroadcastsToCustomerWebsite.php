@@ -13,17 +13,19 @@ trait BroadcastsToCustomerWebsite
 
     public function broadcastOn(): mixed
     {
-        return match ($this->getBroadcastStrategy()) {
+        return match ($strategy = $this->getBroadcastStrategy()) {
             'websocket' => new PrivateChannel('pizzas.'.$this->model->id),
             'webhook' => CustomerWebsiteWebhookChannel::create(),
+            default => throw new BroadcastException("Unknown broadcast strategy '$strategy'.")
         };
     }
 
     public function broadcastConnections(): array
     {
-        return match ($this->getBroadcastStrategy()) {
+        return match ($strategy = $this->getBroadcastStrategy()) {
             'websocket' => [config('broadcasting.default')],
             'webhook' => ['webhook'],
+            default => throw new BroadcastException("Unknown broadcast strategy '$strategy'.")
         };
     }
 
@@ -32,7 +34,7 @@ trait BroadcastsToCustomerWebsite
         $strategy = config('customer-website.broadcast_using', $default);
 
         if (! $strategy) {
-            throw new BroadcastException("Unknown broadcast strategy '$strategy'.");
+            throw new BroadcastException('Please configure a broadcasting strategy for the customer website.');
         }
 
         return $strategy;
