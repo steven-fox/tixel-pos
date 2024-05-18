@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignIdFor(User::class, 'customer_id')
-                ->constrained()
+                ->constrained('users')
                 ->cascadeOnDelete();
 
             $table->string('status');
