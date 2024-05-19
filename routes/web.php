@@ -6,7 +6,6 @@ use App\Http\Controllers\PizzaStatusController;
 use App\Http\Controllers\PosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', PosController::class)->name('pos');
