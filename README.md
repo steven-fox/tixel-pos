@@ -11,6 +11,11 @@ _Install dependencies and build the frontend._
 > npm run build
 ```
 
+If necessary, create your `.env` file from `.env.example`, configure your database, and then run migrations with the seeder.
+```bash
+> php artisan migrate:fresh --seed
+```
+
 _In a long running terminal, run a queue worker and start Reverb._
 ```bash
 > php artisan queue:work & php artisan reverb:start
