@@ -18,8 +18,13 @@ export interface User {
 export interface Pizza {
   id: number;
   customer_id: number;
-  status: { name: string; transitionable_states: string[] };
+  status: PizzaState;
   created_at: string;
   updated_at: string;
   customer: ?User;
+}
+
+export interface PizzaState {
+    name: string;
+    transitionable_states: string[];
 }

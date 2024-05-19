@@ -19,6 +19,7 @@ abstract class PizzaState extends State
             ->allowTransition(Pending::class, Started::class)
             ->allowTransition(Started::class, Baking::class)
             ->allowTransition(Baking::class, Finished::class)
+            ->allowTransition([Started::class, Baking::class, Finished::class], Pending::class) // reset
             ->stateChangedEvent(PizzaStateChanged::class);
     }
 

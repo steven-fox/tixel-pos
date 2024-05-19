@@ -13,7 +13,7 @@ class PizzaResetController extends Controller
      */
     public function __invoke(Request $request, Pizza $pizza)
     {
-        $pizza->status = Pending::class;
+        $pizza->status->transitionTo(Pending::class);
         $pizza->save();
 
         return to_route('pos');

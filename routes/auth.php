@@ -57,3 +57,6 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
+
+\Illuminate\Support\Facades\Broadcast::routes();
+\Illuminate\Support\Facades\Broadcast::userRoutes();

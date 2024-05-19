@@ -36,12 +36,12 @@ const statusColors: Object = {
         </div>
       </div>
       <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-        <div
+        <span
           class="rounded-full flex-none py-1 px-2 text-xs font-medium ring-1 ring-inset uppercase"
           :class="statusColors[pizza.status.name]"
         >
           {{ pizza.status.name }}
-        </div>
+        </span>
         <p class="mt-1 text-xs leading-5 text-gray-500">
           <time :datetime="pizza.updated_at">{{
             usePrettyDate(new Date(pizza.updated_at))

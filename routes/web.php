@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerWebsiteController;
 use App\Http\Controllers\PizzaResetController;
 use App\Http\Controllers\PizzaStatusController;
 use App\Http\Controllers\PosController;
@@ -9,7 +10,7 @@ use Inertia\Inertia;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', PosController::class)->name('pos');
-    Route::get('/website', fn () => Inertia::render('Website'))->name('website');
+    Route::get('/website', CustomerWebsiteController::class)->name('website');
 
     Route::post('/pizzas/{pizza}/status', PizzaStatusController::class)->name('pizzas.status');
     Route::post('/pizzas/{pizza}/reset', PizzaResetController::class)->name('pizzas.reset');
