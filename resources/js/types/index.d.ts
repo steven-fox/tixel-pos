@@ -1,12 +1,25 @@
+export type PageProps<
+  T extends Record<string, unknown> = Record<string, unknown>,
+> = T & {
+  auth: {
+    user: User;
+  };
+};
+
 export interface User {
-    id: number;
-    name: string;
-    email: string;
-    email_verified_at: string;
+  id: number;
+  name: string;
+  email: string;
+  email_verified_at: string;
+  created_at: string;
+  updated_at: string;
 }
 
-export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
-    auth: {
-        user: User;
-    };
-};
+export interface Pizza {
+  id: number;
+  customer_id: number;
+  status: { name: string; transitionable_states: string[] };
+  created_at: string;
+  updated_at: string;
+  customer: ?User;
+}

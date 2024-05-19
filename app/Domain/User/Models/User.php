@@ -2,8 +2,10 @@
 
 namespace App\Domain\User\Models;
 
+use App\Domain\Pizza\Models\Pizza;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -43,5 +45,10 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function pizzas(): HasMany
+    {
+        return $this->hasMany(Pizza::class, 'customer_id');
     }
 }

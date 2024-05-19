@@ -10,7 +10,7 @@ use Spatie\ModelStates\StateConfig;
 /**
  * @extends State<Pizza>
  */
-class PizzaState extends State
+abstract class PizzaState extends State
 {
     public static function config(): StateConfig
     {
@@ -20,5 +20,23 @@ class PizzaState extends State
             ->allowTransition(Started::class, Baking::class)
             ->allowTransition(Baking::class, Finished::class)
             ->stateChangedEvent(PizzaStateChanged::class);
+    }
+
+    public static function sequence(): array
+    {
+        return [
+            Pending::getMorphClass(),
+            Started::getMorphClass(),
+            Baking::getMorphClass(),
+            Finished::getMorphClass(),
+        ];
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'name' => $this->getValue(),
+            'transitionable_states' => $this->transitionableStates(),
+        ];
     }
 }
