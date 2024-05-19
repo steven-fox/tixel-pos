@@ -6,6 +6,7 @@
         "build": "vue-tsc && vite build"
     },
     "devDependencies": {
+        "@heroicons/vue": "^2.1.3",
         "@inertiajs/vue3": "^1.0.0",
         "@tailwindcss/forms": "^0.5.3",
         "@vitejs/plugin-vue": "^5.0.0",
@@ -14,6 +15,7 @@
         "laravel-echo": "^1.16.1",
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.31",
+        "prettier": "3.2.5",
         "pusher-js": "^8.4.0-rc2",
         "tailwindcss": "^3.2.1",
         "typescript": "^5.0.2",
