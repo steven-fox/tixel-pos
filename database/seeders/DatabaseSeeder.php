@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Domain\Pizza\Models\Pizza;
 use App\Domain\User\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -12,11 +13,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        Pizza::factory()
+            ->finished()
+            ->createMany(3);
+
+        // "Current" pizza for our default user.
+        Pizza::factory()
+            ->pending()
+            ->for($user, 'customer')
+            ->create();
     }
 }
